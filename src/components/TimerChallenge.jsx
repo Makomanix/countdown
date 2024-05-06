@@ -4,8 +4,6 @@ import ResultModal from './ResultModal';
 export default function TimerChallenge({ title, targetTime }) {
 
   const highScore = localStorage.getItem(targetTime) ?? 0;
-  console.log("highscore", highScore)
-
 
   const timer = useRef();
   const dialog = useRef();
@@ -43,7 +41,7 @@ export default function TimerChallenge({ title, targetTime }) {
     localStorage.removeItem(targetTime);
     setDeletedScore(prevDeletedScore => !prevDeletedScore);
   }
-
+    console.log(typeof(title))
 
   return (
     <>
@@ -53,7 +51,7 @@ export default function TimerChallenge({ title, targetTime }) {
       remainingTime={timeRemaining} 
       onReset={handleReset}
       score={score}/>
-      <section className="challenge">
+      <section className={`challenge ${title}`} >
         <h2>{title}</h2>
         <p className="challenge-time">{targetTime} second{targetTime > 1 ? "s" : ''}</p>
         <p>
